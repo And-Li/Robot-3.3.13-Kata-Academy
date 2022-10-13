@@ -1,0 +1,50 @@
+public static void moveRobot(Robot robot, int toX, int toY) {
+    Direction dir = robot.getDirection();
+
+    if (robot.getX() < toX) {
+        while (dir != Direction.RIGHT) {
+            robot.turnRight();
+            dir = robot.getDirection();
+        }
+    }
+    while (robot.getX() < toX) {
+        robot.stepForward();
+    }
+    if (robot.getX() > toX) {
+        while (dir != Direction.LEFT) {
+            robot.turnRight();
+            dir = robot.getDirection();
+        }
+    }
+    while (robot.getX() > toX) {
+        robot.stepForward();   
+    }
+    if (robot.getY() < toY) {
+        while (dir != Direction.UP) {
+            robot.turnRight();
+            dir = robot.getDirection();
+        }
+    }
+    while (robot.getY() < toY) {
+        robot.stepForward();   
+    }
+    if (robot.getY() > toY) {
+        while (dir != Direction.DOWN) {
+            robot.turnRight();
+            dir = robot.getDirection();
+        }
+    }
+    while (robot.getY() > toY) {
+        robot.stepForward();   
+    }
+    if (robot.getX() == toX) {
+        System.out.println(robot.getX());
+        System.out.println(toX);
+        System.out.println("X correct");
+    }
+    if (robot.getY() == toY) {
+        System.out.println(robot.getY());
+        System.out.println(toY);
+        System.out.println("Y correct");
+    }
+}
