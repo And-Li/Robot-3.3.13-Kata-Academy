@@ -1,7 +1,7 @@
 public class Robot3 {
     public static void main(String[] args) {
-        Robot robot = new Robot(6,15, Direction.UP);
-        moveRobot(robot,10 , 12);
+        Robot robot = new Robot(8,1, Direction.UP);
+        moveRobot(robot,4 ,2 );
     }
     public enum Direction {
         UP,
@@ -41,33 +41,71 @@ public class Robot3 {
         }
     }
     public static void moveRobot(Robot robot, int toX, int toY) {
-        int x = robot.getX();
-        int y = robot.getY();
+        int x = robot.x;
+        int y = robot.y;
         Direction dir = robot.getDirection();
 
-        while (x < toX && dir != Direction.LEFT){
-            robot.turnRight();
-            while (x < toX) {
+        if (x < toX) {
+            while (dir != Direction.RIGHT) {
+                robot.turnRight();
+                dir = robot.getDirection();
+                System.out.println("Turning right");
+                System.out.println(dir);}
+        }
+        while (x < toX) {
+                System.out.println("stepping forward");
                 robot.stepForward();   // робот делает шаг вперед
-            }
+                x++;
+
+        }
+        if (x > toX) {
+            while (dir != Direction.LEFT) {
+                robot.turnRight();
+                dir = robot.getDirection();
+                System.out.println("Turning right");
+                System.out.println(dir);}
+        }
+        while (x > toX) {
+            System.out.println("stepping forward");
+            robot.stepForward();   // робот делает шаг вперед
+            x--;
+
+        }
+        if (y < toY) {
+            while (dir != Direction.UP) {
+                robot.turnRight();
+                dir = robot.getDirection();
+                System.out.println("Turning right");
+                System.out.println(dir);}
+        }
+        while (y < toY) {
+            System.out.println("stepping forward");
+            robot.stepForward();   // робот делает шаг вперед
+            y++;
+
+        }
+        if (y > toY) {
+            while (dir != Direction.DOWN) {
+                robot.turnRight();
+                dir = robot.getDirection();
+                System.out.println("Turning right");
+                System.out.println(dir);}
+        }
+        while (y > toY) {
+            System.out.println("stepping forward");
+            robot.stepForward();   // робот делает шаг вперед
+            y--;
+
         }
 
-        while (x > toX && dir != Direction.RIGHT) {
-            robot.turnRight();
-            robot.stepForward();   // и робот делает шаг вперед
-        }
-        while (y < toY && dir != Direction.UP) {   // пока Y меньше нужного
-            robot.turnRight();
-            robot.stepForward();  // робот делает шаг вперед
-        }
-        while (y > toY && dir != Direction.DOWN) {   // пока Y меньше нужного
-            robot.turnRight();
-            robot.stepForward();  // и робот делает шаг вперед
-        }
         if (x == toX) {
+            System.out.println(x);
+            System.out.println(toX);
             System.out.println("X correct");
         }
         if (y == toY) {
+            System.out.println(y);
+            System.out.println(toY);
             System.out.println("Y correct");
         }
     }
